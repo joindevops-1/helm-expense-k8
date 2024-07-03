@@ -9,10 +9,12 @@ spec:
   selector:
     matchLabels:
       app: nginx
+      purpose: helm
   template:
     metadata:
       labels:
         app: nginx
+        purpose: helm
     spec:
       containers:
       - name: nginx
