@@ -1,5 +1,5 @@
 statefulset:
-  imageVersion: 1.0
+  imageVersion: v1.0
   replicas: 1
 configmap:
   mysqlDatabase: transactions
