@@ -1,0 +1,8 @@
+statfulset:
+  imageVersion: 1.0
+  replicas: 1
+configmap:
+  mysqlDatabase: transactions
+  mysqlUser: expense
+  mysqlPassword: ExpenseApp@1
+  rootPassword: ExpenseApp@1

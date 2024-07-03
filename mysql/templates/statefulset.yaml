@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: expense
+spec:
+  selector:
+    matchLabels:
+      # has to match .spec.template.metadata.labels
+      component: mysql
+      project: expense
+      tier: db 
+  serviceName: "mysql-headless"
+  replicas: {{ .Values.statefulset.replicas }}
+  template:
+    metadata:
+      labels:
+       # has to match .spec.selector.matchLabels
+        component: mysql
+        project: expense
+        tier: db 
+    spec:
+      containers:
+      - name: mysql
+        image: joindevops/mysql:{{ .Values.statefulset.imageVersion }}
+        imagePullPolicy: Always
+        # args:
+        # - "--ignore-db-dir=lost+found"
+        volumeMounts:
+        - name: mysql
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "expense-ebs"
+      resources:
+        requests:
+          storage: 1G

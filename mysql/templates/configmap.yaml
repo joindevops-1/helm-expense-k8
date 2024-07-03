@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  namespace: expense
+data:
+  MYSQL_ROOT_PASSWORD: "{{ .Values.configmap.rootPassword }}"
+  MYSQL_USER: "{{ .Values.configmap.mysqlUser }}"
+  MYSQL_PASSWORD: "{{ .Values.configmap.mysqlPassword }}"
+  MYSQL_DATABASE: "{{ .Values.configmap.mysqlDatabase }}"
