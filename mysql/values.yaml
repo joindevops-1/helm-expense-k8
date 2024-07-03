@@ -1,4 +1,4 @@
-statfulset:
+statefulset:
   imageVersion: 1.0
   replicas: 1
 configmap:
